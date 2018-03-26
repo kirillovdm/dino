@@ -1,0 +1,187 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <!-- include a-frame -->
+    <!--<script src="node_modules/aframe/aframe.js"></script>-->
+
+    <!--&lt;!&ndash; include ar.js for aframe &ndash;&gt;-->
+    <script src="main.js"></script>
+    <script src='js/aframe-ar.js'></script>
+    <script src="js/aframe-extras.min.js"></script>
+    <!--<script>ARjs.Context.baseURL = 'vendor/AR.js/three.js/'</script>-->
+    <!--<script src="js/vendor/video_controls.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="css/nouislider.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/styles.css">-->
+
+</head>
+<!-- start the body of your page -->
+<body style='margin : 0px; overflow: hidden;'>
+<!-- add some info at the top of the page -->
+<!--<div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>-->
+<!--<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - tango example for a-frame by <a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>-->
+<!--</div>-->
+
+
+
+
+
+<!-- Define your 3d scene and enabled ar.js -->
+<a-scene embedded arjs='trackingMethod: best; detectionMode: color_and_matrix; debugUIEnabled: false;'>
+    <div id="caption" class="caption-container">
+
+        <div class="slider-control-wrap">
+            <div class="slider-control" id="slider-control_scale">
+                <div id="slider-scale-value"></div>
+            </div>
+            <div class="slider-control" id="slider-control_position">
+                <div id="slider-position-value"></div>
+            </div>
+
+        </div>
+
+        <div class="buttons-container" id="buttons-container">
+            <div id="stand-button" class="caption-button active">Stand</div>
+            <div id="walk-button" class="caption-button">Walk</div>
+            <div id="run-button" class="caption-button">Run</div>
+        </div>
+        <div class="caption-text-container">
+            <div class="caption-text-header">
+                <div class="header-text">
+                    <span class="info-content raptor_1">T-Rex1</span>
+                    <span class="info-content raptor_2">T-Rex2</span>
+                    <span class="info-content raptor_3">T-Rex3</span>
+                </div>
+                <div class="header-button" id="hide-more-button">-More-</div>
+            </div>
+            <div class="caption-text collapsed" id="caption-text">
+                <div class="text-wrap">
+                <span class="info-content raptor_1">
+                Tyrannosaurus[nb 1] is a genus of coelurosaurian theropod dinosaur. The species Tyrannosaurus rex (rex
+                meaning "king" in Latin) is one of the most well-represented of the large theropods. Tyrannosaurus lived
+                throughout what is now western North America, on what was then an island continent known as Laramidia.
+                Tyrannosaurus had a much wider range than other tyrannosaurids. Fossils are found in a variety of rock
+                formations dating to the Maastrichtian age of the upper Cretaceous Period, 68 to 66 million years ago.[2] It
+                was the last known member of the tyrannosaurids,[3] and among the last non-avian dinosaurs to exist before
+                the Cretaceous–Paleogene extinction.
+                </span>
+                    <span class="info-content raptor_2">
+                Tyrannosaurus[nb 2] is a genus of coelurosaurian theropod dinosaur. The species Tyrannosaurus rex (rex
+                meaning "king" in Latin) is one of the most well-represented of the large theropods. Tyrannosaurus lived
+                throughout what is now western North America, on what was then an island continent known as Laramidia.
+                Tyrannosaurus had a much wider range than other tyrannosaurids. Fossils are found in a variety of rock
+                formations dating to the Maastrichtian age of the upper Cretaceous Period, 68 to 66 million years ago.[2] It
+                was the last known member of the tyrannosaurids,[3] and among the last non-avian dinosaurs to exist before
+                the Cretaceous–Paleogene extinction.
+                </span>
+                    <span class="info-content raptor_3">
+                Tyrannosaurus[nb 3] is a genus of coelurosaurian theropod dinosaur. The species Tyrannosaurus rex (rex
+                meaning "king" in Latin) is one of the most well-represented of the large theropods. Tyrannosaurus lived
+                throughout what is now western North America, on what was then an island continent known as Laramidia.
+                Tyrannosaurus had a much wider range than other tyrannosaurids. Fossils are found in a variety of rock
+                formations dating to the Maastrichtian age of the upper Cretaceous Period, 68 to 66 million years ago.[2] It
+                was the last known member of the tyrannosaurids,[3] and among the last non-avian dinosaurs to exist before
+                the Cretaceous–Paleogene extinction.
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a-assets>
+        <a-asset-item id="t-rex-obj" src="assets/models/trex_gltf/TyrannosaurusRex.gltf"></a-asset-item>
+        <!--<a-asset-item id="ankylosaurus" src="assets/models/trex_gltf/TyrannosaurusRex.gltf"></a-asset-item>-->
+        <!--<a-asset-item id="triceratops" src="assets/models/trex_gltf/TyrannosaurusRex.gltf"></a-asset-item>-->
+        <a-asset-item id="ankylosaurus" src="assets/models/Ankylosaurus/Ankylosaurus.gltf"></a-asset-item>
+        <a-asset-item id="triceratops" src="assets/models/Triceratops/Triceratops.gltf"></a-asset-item>
+    </a-assets>
+
+
+    <a-marker preset="custom"
+              type="pattern"
+              patternUrl="assets/markers/dino_a/pattern_marker_1.patt"
+              id="raptor-marker1" show-caption1>
+    <!--<a-marker preset="hiro"-->
+              <!--id="raptor-marker"-->
+              <!--show-caption>-->
+        <a-entity id="raptor-container1">
+            <a-entity geometry="primitive:plane; width: 1; height: 1;"
+                      material="color: #999999; opacity: 0;"
+                      position="0 0 0"
+                      rotation="-90 0 0"
+                      scale="1 1 1"></a-entity>
+            <a-entity id="raptor-model1"
+                      class="dino-model visible-model"
+                      gltf-model="#t-rex-obj"
+                      position="0 0 0"
+                      rotation="0 90 -135"
+                      scale="0.25 0.25 0.25"
+                      animation-state="stand-button"
+                      animation-mixer="clip: *; loop: repeat;"
+                      animation-control
+                      animation-timeline="track: 0; breaks: 0.0, 12.0, 13.0, 17.0, 18.0, 19.95">
+            </a-entity>
+        </a-entity>
+    </a-marker>
+
+
+    <a-marker preset="custom"
+              type="pattern"
+              patternUrl="assets/markers/dino_a/pattern_marker_2.patt"
+              id="raptor-marker2" show-caption2>
+        <a-entity id="raptor-container2">
+            <a-entity geometry="primitive:plane; width: 1; height: 1;"
+                      material="color: #999999; opacity: 0.5;"
+                      rotation="-90 0 0"
+                      scale="1 1 1"></a-entity>
+            <a-entity id="raptor-model2"
+                      class="dino-model"
+                      gltf-model="#ankylosaurus"
+                      position="0 0 0"
+                      rotation="0 90 -135"
+                      scale="0.25 0.25 0.25"
+                      animation-state="stand-button"
+                      animation-mixer="clip: *; loop: repeat;"
+                      animation-control
+                      animation-timeline="track: 0; breaks: 0.0, 4.967, 5.967, 9.233, 10.075, 10.90">
+            </a-entity>
+        </a-entity>
+    </a-marker>
+
+
+    <a-marker preset="custom"
+              type="pattern"
+              patternUrl="assets/markers/dino_a/pattern_marker_3.patt"
+              id="raptor-marker3" show-caption3>
+        <a-entity id="raptor-container3">
+            <a-entity geometry="primitive:plane; width: 1; height: 1;"
+                      material="color: #999999; opacity: 0;"
+                      rotation="-90 0 0"
+                      scale="1 1 1"></a-entity>
+            <a-entity id="raptor-model3"
+                      class="dino-model"
+                      gltf-model="#triceratops"
+                      position="0 0 0"
+                      rotation="0 90 -135"
+                      scale="0.25 0.25 0.25"
+                      animation-state="stand-button"
+                      animation-mixer="clip: *; loop: repeat;"
+                      animation-control
+                      animation-timeline="track: 0; breaks: 0.0, 4.96, 5.96, 9.2, 10.233, 11.51">
+            </a-entity>
+        </a-entity>
+    </a-marker>
+
+    <!-- Define a static camera -->
+    <a-camera-static></a-camera-static>
+    <!--<a-entity camera></a-entity>-->
+
+</a-scene>
+
+<script src="js/nouislider.min.js"></script>
+<script src="js/actions.js"></script>
+</body>
+</html>
